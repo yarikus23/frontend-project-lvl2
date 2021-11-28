@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/yarikus23/frontend-project-lvl2/issues"
   },
-  "homepage": "https://github.com/yarikus23/frontend-project-lvl2#readme"
+  "homepage": "https://github.com/yarikus23/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^8.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3"
+  }
 }
