@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/yarikus23/frontend-project-lvl2#readme",
   "dependencies": {
-    "commander": "^8.3.0"
+    "commander": "^8.3.0",
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.3.0",
