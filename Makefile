@@ -6,3 +6,6 @@ install: # install dependences
 
 gendiff: # execute file bin/gendiff.js
 	node bin/gendiff.js
+
+lint: # execute eslint
+	npx eslint .
