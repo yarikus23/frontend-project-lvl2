@@ -9,3 +9,6 @@ gendiff: # execute file bin/gendiff.js
 
 lint: # execute eslint
 	npx eslint .
+
+tests: # execute jest
+	npx jest
