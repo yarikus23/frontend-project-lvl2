@@ -11,4 +11,4 @@ lint: # execute eslint
 	npx eslint .
 
 tests: # execute jest
-	npx jest
+	npx --experimental-vm-modules jest 
