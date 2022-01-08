@@ -12,3 +12,6 @@ lint: # execute eslint
 
 tests: # execute jest
 	npm test
+
+test-coverage:
+	npm test -- --coverage --coverageProvider=v8
