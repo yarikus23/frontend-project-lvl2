@@ -5,7 +5,7 @@
   "type": "module",
   "main": "src/diff.js",
   "scripts": {
-    "test": "npx jest"
+    "test": "npx jest --experimental-vm-modules"
   },
   "repository": {
     "type": "git",
