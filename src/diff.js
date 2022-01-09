@@ -1,5 +1,3 @@
-/* eslint-disable import/extensions */
-/* eslint-disable no-console */
 import _ from 'lodash';
 
 const genDiff = (file1, file2) => {
