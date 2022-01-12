@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { readFileSync } from 'fs';
 import path from 'path';
 import genDiff from '../src/diff.js';
 
@@ -23,9 +22,7 @@ program
     if (filepath2[0] === '/') {
       path2 = path.resolve(rootDir, filepath2);
     }
-    const file1 = readFileSync(path1, 'utf8');
-    const file2 = readFileSync(path2, 'utf8');
-    const diff = genDiff(file1, file2);
+    const diff = genDiff(path1, path2);
     console.log(diff);
   });
 

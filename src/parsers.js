@@ -2,7 +2,7 @@ import yaml from 'js-yaml';
 import path from 'path';
 import fs, { readFileSync } from 'fs';
 
-const parse = (filePath) => {
+const parser = (filePath) => {
   let parsed;
   const format = path.extname(filePath);
   if (format === '.json') {
@@ -14,4 +14,4 @@ const parse = (filePath) => {
   return parsed;
 };
 
-export default parse;
+export default parser;
