@@ -3,6 +3,7 @@
 import { Command } from 'commander';
 import path from 'path';
 import genDiff from '../src/diff.js';
+import parser from '../src/parsers.js';
 
 const program = new Command();
 
@@ -22,7 +23,9 @@ program
     if (filepath2[0] === '/') {
       path2 = path.resolve(rootDir, filepath2);
     }
-    const diff = genDiff(path1, path2);
+    const obj1 = parser(path1);
+    const obj2 = parser(path2);
+    const diff = genDiff(obj1, obj2);
     console.log(diff);
   });
 
