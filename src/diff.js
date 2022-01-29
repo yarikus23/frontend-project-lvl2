@@ -5,22 +5,25 @@ const genDiff = (obj1, obj2) => {
   const keys2 = Object.keys(obj2);
   const allKeys = _.union(keys1, keys2);
   const sortedKeys = _.sortBy(allKeys);
-  const globalTab = '    ';
-  const obj1Tab = '  - ';
-  const obj2Tab = '  + ';
   const diff = sortedKeys.reduce((acc, key) => {
-    const obj1Value = `${obj1Tab}${key}: ${obj1[key]}`;
-    const obj2Value = `${obj2Tab}${key}: ${obj2[key]}`;
-    const globalValue = `${globalTab}${key}: ${obj1[key]}`;
+    const value1 = obj1[key];
+    const value2 = obj2[key];
     if (_.has(obj1, key) && _.has(obj2, key)) {
-      return (obj1[key] !== obj2[key]) ? [...acc, obj1Value, obj2Value] : [...acc, globalValue];
+      if (_.isObject(value1) && _.isObject(value2)) {
+        const children = genDiff(value1, value2);
+        return { ...acc, [key]: { type: 'unchanged', val1: children } };
+      }
+      if (value1 === value2) {
+        return { ...acc, [key]: { type: 'unchanged', val1: value1 } };
+      }
+      return { ...acc, [key]: { type: 'changed', val1: value1, val2: value2 } };
     }
     if (_.has(obj1, key)) {
-      return [...acc, obj1Value];
+      return { ...acc, [key]: { type: 'deleted', val1: value1 } };
     }
-    return [...acc, obj2Value];
-  }, []);
-  return `{\n${diff.join('\n')}\n}`;
+    return { ...acc, [key]: { type: 'added', val2: value2 } };
+  }, {});
+  return diff;
 };
 
 export default genDiff;
