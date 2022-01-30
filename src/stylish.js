@@ -25,7 +25,7 @@ const toStylish = (data, replacer = ' ', spacesCount = 2) => {
           value = val;
         }
         if (val.type === 'changed') {
-          return `${currentIndent}- {key}: ${iter(val.val1, depth + 2)}\n${currentIndent}+ ${key}: ${iter(val.val2, depth + 2)}`;
+          return `${currentIndent}- ${key}: ${iter(val.val1, depth + 2)}\n${currentIndent}+ ${key}: ${iter(val.val2, depth + 2)}`;
         }
         return `${currentIndent}${bar}${key}: ${iter(value, depth + 2)}`;
       });
