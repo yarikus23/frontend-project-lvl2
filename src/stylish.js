@@ -12,25 +12,29 @@ const toStylish = (data, replacer = ' ', spacesCount = 2) => {
     const lines = Object
       .entries(currentValue)
       .map(([key, val]) => {
+        let bar = '  ';
+        const bar1 = '- ';
+        const bar2 = '+ ';
+        const value1 = val.val1;
+        const value2 = val.val2;
+        let value = value1;
         if (val.type === 'deleted') {
-          return `${currentIndent}- ${key}: ${iter(val.val1, depth + 2)}`;
+          bar = bar1;
+          value = value1;
         }
         if (val.type === 'added') {
-          return `${currentIndent}+ ${key}: ${iter(val.val2, depth + 2)}`;
+          bar = bar2;
+          value = value2;
+        }
+        if (val.type === undefined) {
+          value = val;
         }
         if (val.type === 'changed') {
-          return `${currentIndent}- ${key}: ${iter(val.val1, depth + 2)}\n${currentIndent}+ ${key}: ${iter(val.val2, depth + 2)}`;
+          return `${currentIndent}${bar1}${key}: ${iter(value1, depth + 2)}\n${currentIndent}${bar2}${key}: ${iter(value2, depth + 2)}`;
         }
-        if (val.type === 'unchanged') {
-          return `${currentIndent}  ${key}: ${iter(val.val1, depth + 2)}`;
-        }
-        return `${currentIndent}  ${key}: ${iter(val, depth + 2)}`;
+        return `${currentIndent}${bar}${key}: ${iter(value, depth + 2)}`;
       });
-    return [
-      '{',
-      ...lines,
-      `${bracketIndent}}`,
-    ].join('\n');
+    return ['{', ...lines, `${bracketIndent}}`].join('\n');
   };
   return iter(data, 1);
 };
