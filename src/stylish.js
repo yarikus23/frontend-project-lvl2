@@ -12,22 +12,19 @@ const toStylish = (data, replacer = ' ', spacesCount = 2) => {
     const lines = Object
       .entries(currentValue)
       .map(([key, val]) => {
-        let bar = '  ';
         if (val.type === 'deleted') {
-          bar = '- ';
-          return `${currentIndent}${bar}${key}: ${iter(val.val1, depth + 2)}`;
+          return `${currentIndent}- ${key}: ${iter(val.val1, depth + 2)}`;
         }
         if (val.type === 'added') {
-          bar = '+ ';
-          return `${currentIndent}${bar}${key}: ${iter(val.val2, depth + 2)}`;
+          return `${currentIndent}+ ${key}: ${iter(val.val2, depth + 2)}`;
         }
         if (val.type === 'changed') {
-          return `${currentIndent}- ${key}: ${iter(val.val1, depth + 2)}\n${currentIndent}+ ${key}: ${iter(val.val2, depth + 1)}`;
+          return `${currentIndent}- ${key}: ${iter(val.val1, depth + 2)}\n${currentIndent}+ ${key}: ${iter(val.val2, depth + 2)}`;
         }
         if (val.type === 'unchanged') {
-          return `${currentIndent}${bar}${key}: ${iter(val.val1, depth + 2)}`;
+          return `${currentIndent}  ${key}: ${iter(val.val1, depth + 2)}`;
         }
-        return `${currentIndent}${bar}${key}: ${iter(val, depth + 2)}`;
+        return `${currentIndent}  ${key}: ${iter(val, depth + 2)}`;
       });
     return [
       '{',
