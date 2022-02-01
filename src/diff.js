@@ -8,20 +8,25 @@ const genDiff = (obj1, obj2) => {
   const diff = sortedKeys.reduce((acc, key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
+    let currentVal;
     if (_.has(obj1, key) && _.has(obj2, key)) {
       if (_.isObject(value1) && _.isObject(value2)) {
         const children = genDiff(value1, value2);
         return { ...acc, [key]: { type: 'unchanged', val1: children } };
       }
       if (value1 === value2) {
-        return { ...acc, [key]: { type: 'unchanged', val1: value1 } };
+        currentVal = { type: 'unchanged', val1: value1 };
+      } else {
+        currentVal = { type: 'changed', val1: value1, val2: value2 };
       }
-      return { ...acc, [key]: { type: 'changed', val1: value1, val2: value2 } };
+      return { ...acc, [key]: currentVal };
     }
     if (_.has(obj1, key)) {
-      return { ...acc, [key]: { type: 'deleted', val1: value1 } };
+      currentVal = { type: 'deleted', val1: value1 };
+    } else {
+      currentVal = { type: 'added', val2: value2 };
     }
-    return { ...acc, [key]: { type: 'added', val2: value2 } };
+    return { ...acc, [key]: currentVal };
   }, {});
   return diff;
 };
