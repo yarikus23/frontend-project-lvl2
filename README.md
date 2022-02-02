@@ -5,3 +5,4 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ceef1f9979684e9aeb1b/maintainability)](https://codeclimate.com/github/yarikus23/frontend-project-lvl2/maintainability)
 [![asciicast](https://asciinema.org/a/Z77drq6nMqVnJIYZHvPPcW4H1.svg)](https://asciinema.org/a/Z77drq6nMqVnJIYZHvPPcW4H1)
 [![asciicast](https://asciinema.org/a/NmUKlssx0B0VVnZThLFuRRAs7.svg)](https://asciinema.org/a/NmUKlssx0B0VVnZThLFuRRAs7)
+[![asciicast](https://asciinema.org/a/q9fQlvVWVqJuvS0QwWfGnHu9b.svg)](https://asciinema.org/a/q9fQlvVWVqJuvS0QwWfGnHu9b)
