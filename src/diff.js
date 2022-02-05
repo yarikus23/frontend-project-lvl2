@@ -21,7 +21,7 @@ const genDiff = (obj1, obj2) => {
     if (_.has(obj1, key)) {
       currentVal = { type: 'deleted', val1: value1 };
     } else {
-      currentVal = { type: 'added', val2: value2 };
+      currentVal = { type: 'added', val1: value2 };
     } return { ...acc, [key]: currentVal };
   }, {});
   return diff;

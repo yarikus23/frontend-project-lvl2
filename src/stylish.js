@@ -1,8 +1,5 @@
 const toStylish = (data, depth = 1) => {
-  if (typeof data !== 'object') {
-    return data.toString();
-  }
-  if (data === null) {
+  if (typeof data !== 'object' || data === null) {
     return data;
   }
   const indentSize = depth * 2;
@@ -16,7 +13,6 @@ const toStylish = (data, depth = 1) => {
     }
     if (val.type === 'added') {
       bar = '+ ';
-      value = val.val2;
     }
     if (val.type === undefined) {
       value = val;
