@@ -8,8 +8,7 @@ const toPlain = (data, parent = []) => {
     if (typeof val.val2 !== 'object' || val.val2 === null) {
       value2 = (typeof val.val2 === 'string') ? `'${val.val2}'` : val.val2;
     }
-    const keys = [...parent, key];
-    const keyPath = keys.join('.');
+    const keyPath = [...parent, key].join('.');
     if (val.type === 'deleted') {
       acc.push(`Property '${keyPath}' was removed`);
     }
@@ -20,7 +19,7 @@ const toPlain = (data, parent = []) => {
       acc.push(`Property '${keyPath}' was updated. From ${value1} to ${value2}`);
     }
     if (val.type === 'unchanged' && typeof val.val1 === 'object' && val.val1 !== null) {
-      return [...acc, toPlain(val.val1, keys)];
+      return [...acc, toPlain(val.val1, [...parent, key])];
     }
     return acc;
   }, []);
