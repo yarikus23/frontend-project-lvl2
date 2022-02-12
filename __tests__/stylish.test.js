@@ -39,7 +39,7 @@ test('big data JSON', () => {
 
 test('big data YAML', () => {
   const obj1 = parse(pathBuilder('deepFile1.yaml'));
-  const obj2 = parse(pathBuilder('deepFile2.yaml'));
+  const obj2 = parse(pathBuilder('deepFile2.yml'));
   const etalon = readFileSync(pathBuilder('etalon.yaml'), 'utf8');
   expect(toStylish(genDiff(obj1, obj2))).toEqual(etalon);
 });
