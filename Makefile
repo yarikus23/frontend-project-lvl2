@@ -5,7 +5,7 @@ install: # install dependences
 	npm ci
 
 gendiff: # execute file bin/gendiff.js
-	node bin/gendiff.js
+	node bin/info.js
 
 lint: # execute eslint
 	npx eslint .

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const genDiff = (obj1, obj2) => {
+const differ = (obj1, obj2) => {
   const allKeys = _.union(Object.keys(obj1), Object.keys(obj2));
   const sortedKeys = _.sortBy(allKeys);
   const diff = sortedKeys.reduce((acc, key) => {
@@ -9,7 +9,7 @@ const genDiff = (obj1, obj2) => {
     let currentVal;
     if (_.has(obj1, key) && _.has(obj2, key)) {
       if (_.isObject(value1) && _.isObject(value2)) {
-        const children = genDiff(value1, value2);
+        const children = differ(value1, value2);
         return { ...acc, [key]: { type: 'unchanged', val1: children } };
       }
       if (value1 === value2) {
@@ -27,4 +27,4 @@ const genDiff = (obj1, obj2) => {
   return diff;
 };
 
-export default genDiff;
+export default differ;
