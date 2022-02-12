@@ -3,15 +3,12 @@ import path from 'path';
 import fs, { readFileSync } from 'fs';
 
 const parser = (filePath) => {
-  let parsed;
   const format = path.extname(filePath);
-  if (format === '.json') {
-    const content = readFileSync(filePath, 'utf8');
-    parsed = JSON.parse(content);
-  } else if (format === '.yaml' || format === '.yml') {
-    parsed = yaml.load(fs.readFileSync(filePath, 'utf8'));
+  if (format === '.yaml' || format === '.yml') {
+    return yaml.load(fs.readFileSync(filePath, 'utf8'));
   }
-  return parsed;
+  const content = readFileSync(filePath, 'utf8');
+  return JSON.parse(content);
 };
 
 export default parser;
