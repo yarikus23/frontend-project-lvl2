@@ -1,13 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-// import path from 'path';
-// import genDiff from '../src/diff.js';
 import genDiff from '../src/gendiff.js';
-// import parser from '../src/parsers.js';
-// import toStylish from '../src/formatters/stylish.js';
-// import plain from '../src/formatters/plain.js';
-// import pathbuild from '../src/pathbuild.js';
 
 const program = new Command();
 
