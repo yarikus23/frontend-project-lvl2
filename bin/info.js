@@ -22,6 +22,8 @@ program
       formatted = genDiff(filepath1, filepath2);
     } else if (options.format === 'plain') {
       formatted = genDiff(filepath1, filepath2, 'plain');
+    } else if (options.format === 'json') {
+      formatted = genDiff(filepath1, filepath2, 'json');
     }
     console.log(formatted);
   });
