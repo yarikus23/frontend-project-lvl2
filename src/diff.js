@@ -12,14 +12,12 @@ const differ = (obj1, obj2) => {
     if (!_.has(obj1, key) && _.has(obj2, key)) {
       return { ...acc, [key]: { type: 'added', val1: value2 } };
     }
-    if (value1 === value2) {
-      return { ...acc, [key]: { type: 'unchanged', val1: value1 } };
-    }
     if (_.isObject(value1) && _.isObject(value2)) {
       const children = differ(value1, value2);
       return { ...acc, [key]: { type: 'unchanged', val1: children } };
     }
-    return { ...acc, [key]: { type: 'changed', val1: value1, val2: value2 } };
+    const value = (value1 === value2) ? { type: 'unchanged', val1: value1 } : { type: 'changed', val1: value1, val2: value2 };
+    return { ...acc, [key]: value };
   }, {});
   return diff;
 };
